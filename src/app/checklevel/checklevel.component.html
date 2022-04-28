@@ -1,0 +1,57 @@
+
+
+
+<div class="container mt-5">
+  <div class="d-flex justify-content-center row">
+      <div class="col-md-10 col-lg-10">
+          <div class="border">
+              <div class="question bg-white p-3 border-bottom">
+                  <div class="d-flex flex-row justify-content-between align-items-center mcq">
+                      <h6>{{qList.Questions[currentQuestion].Category}}</h6>
+                  </div>
+              </div>
+              <div class="question bg-white p-3 border-bottom">
+                  <div class="d-flex flex-row align-items-center question-title">
+                      <h3 class="text-danger">Q.({{currentQuestion+1}})</h3>
+                      <h6 class="mt-1 ml-2">{{qList.Questions[currentQuestion].Question}}:</h6>
+                  </div>
+                  <div class="d-flex flex-row align-items-center question-title">
+                    <!--<h2 class="text-danger">Description:</h2>-->
+                    <p class="mt-1 ml-2">{{qList.Questions[currentQuestion].Description}}</p>
+                </div>
+                <div>
+                  <p style="font-weight: 500;">Please select any one of below options:</p>
+                </div>
+                <div *ngFor="let opt of qList.Questions[currentQuestion].Options ">
+                  <div class="ans ml-2">
+                    <label class="radio">
+                       <input type="radio" name="r1"  value={{opt.Score}} [(ngModel)]="opt.IsSelected" #r1="ngModel" (click)="getSelected()" >
+                        <span>{{opt.Option}}</span>
+                    </label>
+                </div>
+                </div>
+
+              </div>
+              <div class="d-flex flex-row justify-content-between align-items-center p-3 bg-white">
+                <button class="btn btn-primary d-flex align-items-center btn-danger" type="button" (click)="PreviousQ()"><i class="fa fa-angle-left mt-1 mr-1"></i>&nbsp;previous</button>
+                <button class="btn btn-primary border-success align-items-center btn-success" type="button" [hidden]="currentQuestion==39" (click)="NextQ()" [disabled]="isSelected==false" >Next<i class="fa fa-angle-right ml-2"></i></button>
+                <button class="btn btn-primary border-success align-items-center btn-success" type="button" [hidden]="currentQuestion!=39" (click)="calculate()" [disabled]="isSelected==false" >Submit<i class="fa fa-angle-right ml-2"></i></button>
+              </div>
+              <div class="row">
+                <div class="col-sm-10">
+
+                </div>
+              <div  class="col-sm-2" style="text-align:right">
+
+                <span style="color: brown;"><b>({{currentQuestion+1}} of {{noOfQuestions}})</b></span>
+              </div>
+              </div>
+
+
+
+
+          </div>
+      </div>
+  </div>
+</div>
+

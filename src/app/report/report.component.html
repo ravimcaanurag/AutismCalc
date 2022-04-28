@@ -1,0 +1,139 @@
+<!--<button class="btn btn-primary" (click)="download()" >Download</button>
+
+<table class="table" id="contentToConvert">
+  <tr><td>Sno</td><td>Name</td></tr>
+ <tr><td>1</td><td>RAVI</td></tr>
+ <tr><td>2</td><td>Kumar</td></tr>
+ <tr><td>3</td><td>Ranga</td></tr>
+</table>-->
+
+
+
+<div class="container mt-5">
+  <div class="d-flex justify-content-center row">
+      <div class="col-md-10 col-lg-10">
+          <div class="border">
+              <div class="question bg-white p-3 border-bottom">
+                  <div class="d-flex flex-row justify-content-between align-items-center mcq">
+                      <h6>Indian Scale for Assessment of Autism</h6>
+                  </div>
+              </div>
+              <div class="question bg-white p-3 border-bottom">
+                  <div class="d-flex flex-row align-items-center question-title">
+                     <table class="gridtable">
+                       <tr><th>Child Name</th><td><b>{{qList.Name}}</b></td></tr>
+                       <tr><th>Age</th><td><b>{{qList.Age}}</b></td></tr>
+                       <tr><th>Gender</th><td><b>{{qList.Gender}}</b></td></tr>
+                       <tr><th>Examiner</th><td><b>{{qList.Examiner}}</b></td></tr>
+                       <tr><th>ISAA Score</th><td><b>{{total}}</b></td></tr>
+                       <tr><th>Degree of Autism</th><td><b>{{level}}</b></td></tr>
+                       <tr><th>Percentage of Disability</th><td><b>{{Percent}}</b></td></tr>
+                       <tr><td colspan="2">
+                        <button class="btn btn-primary" (click)="download()" >Download Report</button>
+                       </td></tr>
+                     </table>
+                  </div>
+                  <div class="row" style="margin-top:30px;">
+                    <div class="col-sm-6">
+                      <div class="d-flex flex-row align-items-center question-title">
+                        <h6 style="color:orange">Norms of ISAA for Diagnosis of Autism:</h6>
+                        <p></p>
+                    </div>
+                    <div>
+                      <table class="gridtable" id="tab1">
+                        <tr><th>ISAA Scores</th><th>Degree of Autism</th></tr>
+                        <tr><td>< 70</td><td>Normal</td></tr>
+                        <tr><td>70 to 106</td><td>Mild Autism</td></tr>
+                        <tr><td>107 to 153</td><td>Moderate Autism</td></tr>
+                        <tr><td>> 153</td><td>Severe Autism</td></tr>
+
+                      </table>
+                    </div>
+
+                    </div>
+                    <div class="col-sm-6">
+
+                      <div class="d-flex flex-row align-items-center question-title">
+                        <h6 style="color:orange">Percentage of Disability as per the score:</h6>
+                        <p></p>
+                    </div>
+                    <div>
+                      <table class="gridtable">
+                        <tr><th>Score</th><th>Percentage (%)</th></tr>
+                        <tr><td>70</td><td>40</td></tr>
+                        <tr><td>71-88</td><td>50</td></tr>
+                        <tr><td>89-105</td><td>60</td></tr>
+                        <tr><td>106-123</td><td>70</td></tr>
+                        <tr><td>124-140</td><td>80</td></tr>
+                        <tr><td>141-158</td><td>90</td></tr>
+                        <tr><td>Above 158</td><td>100</td></tr>
+
+                      </table>
+                    </div>
+
+
+                    </div>
+                  </div>
+
+
+
+              </div>
+              <div class="d-flex flex-row justify-content-between align-items-center p-3 bg-white" >
+                <div class="row">
+                  <div class="col-sm-12"  style="text-align:center">
+
+                  </div>
+                </div>
+
+              </div>
+
+              <div class="d-flex flex-row justify-content-between align-items-center p-3 bg-white" id="contentToConvert" >
+
+                <table class="gridtable" id="simple_table" style="display:none;">
+                  <tr>
+                    <td colspan="4">Name: <b>{{qList.Name}}</b></td>
+
+                  </tr>
+                  <tr>
+                    <td colspan="4">Gender: <b>{{qList.Gender}}</b> </td>
+                  </tr>
+                  <tr>
+                    <td colspan="4">Age:  <b>{{qList.Age}}</b></td>
+                  </tr>
+                  <tr>
+                    <td colspan="4">Examiner: <b>{{qList.Examiner}}</b></td>
+
+                  </tr>
+                  <tr>
+                    <th>S.no</th>
+                    <th>Question</th>
+                    <th>Answer</th>
+                    <th>Score</th>
+                  </tr>
+                  <tr *ngFor="let qobj of qReport;let i=index">
+                    <td>{{i+1}}</td>
+                    <td>{{qobj.Question}}</td>
+                    <td>{{qobj.Answer}}</td>
+                    <td>{{qobj.Score}}</td>
+                  </tr>
+                  <tr>
+                    <td colspan="3" style="text-align:right">Score of ISAA</td>
+                    <td>{{total}}</td>
+                  </tr>
+                  <tr>
+                    <td colspan="3" style="text-align:right">Degree of Autism</td>
+                    <td>{{level}}</td>
+                  </tr>
+                  <tr>
+                    <td colspan="3" style="text-align:right">Percent of Disability</td>
+                    <td>{{Percent}}</td>
+                  </tr>
+                </table>
+
+
+              </div>
+
+          </div>
+      </div>
+  </div>
+</div>

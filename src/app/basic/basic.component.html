@@ -1,0 +1,89 @@
+
+<div class="container mt-5">
+  <div class="d-flex justify-content-center row">
+      <div class="col-md-10 col-lg-10">
+          <div class="border">
+              <div class="question bg-white p-3 border-bottom">
+                  <div class="d-flex flex-row justify-content-between align-items-center mcq">
+                     <div class="row">
+
+                       <div class="col-sm-12">
+                        <h5>Autism Level Check Calculator</h5></div>
+                       </div>
+
+                  </div>
+              </div>
+              <div class="question bg-white p-3 border-bottom">
+                  <div class="d-flex flex-row align-items-center question-title">
+                    <p> This Autism level check calculator is developed based on <b>Indian Scale for Assessment of Autism.</b>
+                      ISAA is an objective assessment tool for persons with autism which uses observation, clinical
+                        evaluation of behaviour, testing by interaction with the subject and also information supplemented by
+                        parents or caretakers in order to diagnose autism. ISAA consists of 40 items rated on a 5-point scale
+                        ranging from 1 (never) to 5 (always).</p>
+                  </div>
+                  <div class="d-flex flex-row align-items-center question-title">
+                    <p> For more detials, please visit at <a href="https://www.thenationaltrust.gov.in/upload/uploadfiles/files/ISAA%20TEST%20MANNUAL(2).pdf" target="blank">ISAA</a></p>
+                </div>
+                <div class="d-flex flex-row align-items-center question-title">
+                  <p>To check Autism level, please proceed with following details. </p>
+              </div>
+                <div>
+                  <div class="ans ml-2">
+                    <form #cinfo="ngForm" novalidate>
+                    <div class="row">
+                      <div class="col-sm-2">Child Name:</div>
+                      <div class="col-sm-3">
+                      <input type="text" id="cname" name="cname" required class="form-control" [(ngModel)]="childname" >
+                      </div>
+
+                      <div class="col-sm-1">Age:</div>
+                      <div class="col-sm-3">
+                      <input type="text" id="cage" name="cage" required class="form-control" [(ngModel)]="Age">
+                      </div>
+
+
+                    </div>
+                    <div class="row" style="margin-top: 12px;">
+                      <div class="col-sm-2">Gender:</div>
+                      <div class="col-sm-3">
+                      <select id="cgender" name="cgender" class="form-control" [(ngModel)]="Gender" required >
+                        <option value="" selected>--Select--</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                      </select>
+                      </div>
+
+                      <div class="col-sm-1">Examiner:</div>
+                      <div class="col-sm-3">
+                      <input type="text" id="cexam" name="cexam" class="form-control" [(ngModel)]="Examiner" required>
+                      </div>
+
+
+                    </div>
+
+                    <div class="row" style="margin-top: 14px;">
+                      <div class="col-sm-4"></div>
+                      <div class="col-sm-4">
+                        <button class="btn btn-primary border-success btn-success" [disabled]="!cinfo.valid" (click)="proceed()"  type="button"  >Proceed<i class="fa fa-angle-right ml-2"></i></button>
+                      </div>
+                    </div>
+                 </form>
+                </div>
+                </div>
+
+              </div>
+              <div class="d-flex flex-row justify-content-between align-items-center p-3 bg-white">
+               <!-- <button class="btn btn-primary d-flex align-items-center btn-danger" type="button"><i class="fa fa-angle-left mt-1 mr-1"></i>&nbsp;previous</button>
+                <button class="btn btn-primary border-success align-items-center btn-success" type="button" >Next<i class="fa fa-angle-right ml-2"></i></button>
+               <!-- <button class="btn btn-primary border-success align-items-center btn-success" type="button"  >Submit<i class="fa fa-angle-right ml-2"></i></button>-->
+              </div>
+
+
+
+
+
+          </div>
+      </div>
+  </div>
+</div>
+
