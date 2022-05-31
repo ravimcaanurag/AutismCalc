@@ -2,6 +2,7 @@ import { QReport, QuestionMdl } from './../question';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import * as jspdf from 'jspdf';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 import html2canvas from 'html2canvas';
 //import jsPDF from 'jspdf';
 //import autoTable from 'jspdf-autotable';
@@ -15,7 +16,7 @@ import { QuestionBank } from '../question';
 })
 export class ReportComponent implements OnInit {
 
-  constructor(private route:Router) { }
+  constructor(private route:Router,private db: AngularFirestore ) { }
 
    level!:string;
    Percent!:string;
@@ -40,7 +41,7 @@ export class ReportComponent implements OnInit {
           reptObj.Score=opt.IsSelected;
         }
       }
-      console.log(reptObj);
+      //console.log(reptObj);
       this.qReport.push(reptObj);
     }
 
@@ -71,6 +72,18 @@ export class ReportComponent implements OnInit {
       else
       this.Percent="0";
 
+      let random = Math.floor(Math.random() * (999999 - 100000)) + 100000;
+      this.db.collection("Users").doc(this.qList.Name+"_"+this.qList.Examiner+"_"+random.toString()).set(
+        {
+          ChildName:this.qList.Name,
+          Age:this.qList.Age,
+          AutismLevel:this.level,
+          Examiner:this.qList.Examiner,
+          Gender:this.qList.Examiner,
+          Score:this.total,
+          Percent:this.Percent
+        }
+        );
 
     //console.log(this.qList);
     }
