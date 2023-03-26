@@ -10,6 +10,7 @@ import { BasicComponent } from './basic/basic.component';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from "@angular/fire/compat/firestore";
 import { environment } from "../environments/environment";
+import { LoggerService } from './logger.service';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,7 @@ import { environment } from "../environments/environment";
     AngularFirestoreModule
 
   ],
-  providers: [],
+  providers: [LoggerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

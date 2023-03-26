@@ -1,4 +1,5 @@
-import { QReport, QuestionMdl } from './../question';
+import { LoggerService } from './../logger.service';
+import { Member, QReport, QuestionMdl } from './../question';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import * as jspdf from 'jspdf';
@@ -16,7 +17,7 @@ import { QuestionBank } from '../question';
 })
 export class ReportComponent implements OnInit {
 
-  constructor(private route:Router,private db: AngularFirestore ) { }
+  constructor(private route:Router,private db: LoggerService ) { }
 
    level!:string;
    Percent!:string;
@@ -73,7 +74,19 @@ export class ReportComponent implements OnInit {
       this.Percent="0";
 
       let random = Math.floor(Math.random() * (999999 - 100000)) + 100000;
-      this.db.collection("Users").doc(this.qList.Name+"_"+this.qList.Examiner+"_"+random.toString()).set(
+      var member=new Member();
+      member.ChildName=this.qList.Name;
+      member.Age=this.qList.Age;
+      member.DegreeOfAutism=this.level;
+      member.Gender=this.qList.Gender
+      member.Examiner=this.qList.Examiner;
+      member.ISAAScore=this.total.toString();
+      member.PercentageOfDisability=this.Percent
+      this.db.addMember(member).subscribe((res)=>{
+        console.log('added')
+      })
+
+      /*this.db.collection("Users").doc(this.qList.Name+"_"+this.qList.Examiner+"_"+random.toString()).set(
         {
           ChildName:this.qList.Name,
           Age:this.qList.Age,
@@ -83,7 +96,7 @@ export class ReportComponent implements OnInit {
           Score:this.total,
           Percent:this.Percent
         }
-        );
+        );*/
 
     //console.log(this.qList);
     }

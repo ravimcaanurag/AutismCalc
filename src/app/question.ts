@@ -32,3 +32,13 @@ export class QReport{
   Score!:number;
 
 }
+
+export class Member{
+  ChildName!:string;
+  Age!:string;
+  Gender!:string;
+  Examiner!:string;
+  ISAAScore!:string;
+  DegreeOfAutism!:string;
+  PercentageOfDisability!:string;
+}
